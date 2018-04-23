@@ -65,7 +65,8 @@ module.exports = function(grunt) {
 
         return {
           src: s,
-          dest: d
+          dest: d,
+          params: file.params || {}
         };
 
       }));
@@ -82,8 +83,8 @@ module.exports = function(grunt) {
       asyncTasks.push((callback) => {
 
         // Set corrent content type
-        let metadata = merge(options.metadata, {
-          contentType: mime.contentType(path.extname(file.src))  || 'application/octet-stream'
+        let metadata = merge(options.metadata, file.params, {
+          contentType: mime.contentType(path.extname(file.src)) || 'application/octet-stream'
         });
 
         bucket.upload(file.src, {
@@ -96,7 +97,6 @@ module.exports = function(grunt) {
           }
 
           grunt.log.ok(`Uploaded: ${file.metadata.name}`);
-
           callback();
         });
 
@@ -108,5 +108,4 @@ module.exports = function(grunt) {
     });
 
   });
-
 };
