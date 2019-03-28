@@ -1,7 +1,7 @@
 {
   "name": "grunt-google-cloud",
   "description": "A Grunt plugin which acts as a wrapper for google-cloud.",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "homepage": "https://github.com/lukebussey/grunt-google-cloud",
   "author": {
     "name": "Luke Bussey",
@@ -30,7 +30,6 @@
     "@google-cloud/storage": "^1.2.1",
     "async": "^2.1.4",
     "deepmerge": "^1.3.0",
-    "fast-crc32c": "^1.0.4",
     "mime-types": "^2.1.13"
   }
 }
