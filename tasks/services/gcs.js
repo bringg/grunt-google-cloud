@@ -1,8 +1,8 @@
-const storage = require('@google-cloud/storage');
 const async = require('async');
 const path = require('path');
 const merge = require('deepmerge');
 const mime = require('mime-types');
+const { Storage } = require('@google-cloud/storage');
 
 module.exports = function(grunt) {
 
@@ -48,8 +48,7 @@ module.exports = function(grunt) {
       metadata: options.metadata
     });
 
-    const gcs = storage(storageOptions);
-
+    const gcs = new Storage(storageOptions);
     const bucket = gcs.bucket(options.bucket);
 
     // Normalize file array
